@@ -83,3 +83,85 @@
 	<string.h>
 	<ctype.h>
 
+1475872130 source:c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdrvis\main.c
+	<math.h>
+	<string.h>
+	"opengl.h"
+	"rgbe.h"
+
+1475872168 c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdrvis\opengl.h
+	<windows.h>
+	"gl/glut.h"
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<stdio.h>
+	<stdlib.h>
+
+1300995668 c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdrvis\include\gl\glut.h
+	"freeglut.h"
+
+1300995668 c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdrvis\include\gl\freeglut.h
+	"freeglut_std.h"
+	"freeglut_ext.h"
+
+1300995668 c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdrvis\include\gl\freeglut_std.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1300995668 c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdrvis\include\gl\freeglut_ext.h
+
+1472593460 c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdrvis\rgbe.h
+	<stdio.h>
+
+1475872204 source:c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdrvis\opengl.c
+	"opengl.h"
+
+1475628294 source:c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdrvis\rgbe.c
+	"rgbe.h"
+	<math.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1475872130 source:c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdr-images\hdrvis\main.c
+	<math.h>
+	<string.h>
+	"opengl.h"
+	"rgbe.h"
+
+1475872168 c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdr-images\hdrvis\opengl.h
+	<windows.h>
+	"gl/glut.h"
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<stdio.h>
+	<stdlib.h>
+
+1300995668 c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdr-images\hdrvis\include\gl\glut.h
+	"freeglut.h"
+
+1300995668 c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdr-images\hdrvis\include\gl\freeglut.h
+	"freeglut_std.h"
+	"freeglut_ext.h"
+
+1300995668 c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdr-images\hdrvis\include\gl\freeglut_std.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1300995668 c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdr-images\hdrvis\include\gl\freeglut_ext.h
+
+1472593460 c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdr-images\hdrvis\rgbe.h
+	<stdio.h>
+
+1475872204 source:c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdr-images\hdrvis\opengl.c
+	"opengl.h"
+
+1475628294 source:c:\users\bianc\documents\puc\3 - semestre\softbas\t2\hdr-images\hdrvis\rgbe.c
+	"rgbe.h"
+	<math.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
