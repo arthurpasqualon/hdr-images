@@ -6,11 +6,11 @@
 
 // Rotinas para leitura de arquivos .hdr
 #include "rgbe.h"
-
 // Variáveis globais a serem utilizadas:
 
 // Dimensões da imagem de entrada
 int sizeX, sizeY;
+int width, height;
 
 // Imagem de entrada
 RGBf* image;
@@ -59,10 +59,21 @@ void process()
 
 int main(int argc, char** argv)
 {
+    FILE* arq = fopen(argv[1],"rb");
+    RGBE_ReadHeader(arq, &sizeX, &sizeY, NULL);
+
+    // Aloca imagem float
+    image = (RGBf *)malloc(sizeof(RGBf) * sizeX * sizeY);
+
+    int result = RGBE_ReadPixels_RLE(arq, (float*)image, sizeX, sizeY);
+    if (result == RGBE_RETURN_FAILURE) {
+       printf("erro");
+    }
+    fclose(arq);
     if(argc==1) {
         printf("hdrvis [image file.hdr]\n");
         exit(1);
-    }
+    }//tentativa de carregar a imagem, mas não rolou
 
     // Inicialização da janela gráfica
     init(argc,argv);
@@ -77,13 +88,10 @@ int main(int argc, char** argv)
     //
 
     // TESTE: cria uma imagem de 800x600
-    sizeX = 800;
+   /* sizeX = 800;
     sizeY = 600;
-
+*/
     printf("%d x %d\n", sizeX, sizeY);
-
-    // Aloca imagem float
-    image = (RGBf *)malloc(sizeof(RGBf) * sizeX * sizeY);
 
     // Aloca memória para imagem de 24 bits
     image8 = (RGB8*) malloc(sizeof(RGB8) * sizeX * sizeY);
