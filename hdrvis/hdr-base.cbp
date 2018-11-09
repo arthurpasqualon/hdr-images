@@ -29,7 +29,7 @@
 				<Option object_output="./" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="table.hdr" />
+				<Option parameters="desk.hdr" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-DFREEGLUT_STATIC" />

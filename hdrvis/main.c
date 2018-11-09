@@ -1,9 +1,7 @@
 #include <math.h>
 #include <string.h>		// para usar strings
-
 // Rotinas para acesso da OpenGL
 #include "opengl.h"
-
 // Rotinas para leitura de arquivos .hdr
 #include "rgbe.h"
 // Variáveis globais a serem utilizadas:
@@ -37,6 +35,7 @@ float fastpow(float a, float b) {
 // quando for necessário (ex: algoritmos de tone mapping, etc)
 void process()
 {
+    //escole a correção com o T E G
     printf("Exposure: %.3f\n", exposure);
     //
     // EXEMPLO: preenche a imagem com pixels cor de laranja...
@@ -44,11 +43,22 @@ void process()
     //
     // SUBSTITUA este código pelos algoritmos a serem implementados
     //
+    if(modo==SCALE){
+
+    }else{ // == gama
+
+    }
+    for(int posI=0; posI<sizeX*sizeY; posI++) {
+         image8[posI].r = (unsigned char) fmin(1.0,image[posI].r)*255;
+         image8[posI].g = (unsigned char) fmin(1.0,image[posI].g)*255;
+         image8[posI].b = (unsigned char) fmin(1.0,image[posI].b)*255;
+    }
+
     int pos;
     for(pos=0; pos<sizeX*sizeY; pos++) {
-        image8[pos].r = (unsigned char) (255 * exposure);
-        image8[pos].g = (unsigned char) (127 * exposure);
-        image8[pos].b = (unsigned char) (0 * exposure);
+        image8[pos].r = (unsigned char) (image[pos].r * exposure);
+        image8[pos].g = (unsigned char) (image[pos].g * exposure);
+        image8[pos].b = (unsigned char) (image[pos].b * exposure);
     }
 
     //
@@ -64,7 +74,8 @@ int main(int argc, char** argv)
 
     // Aloca imagem float
     image = (RGBf *)malloc(sizeof(RGBf) * sizeX * sizeY);
-
+     // Aloca memória para imagem de 24 bits
+    image8 = (RGB8*) malloc(sizeof(RGB8) * sizeX * sizeY);
     int result = RGBE_ReadPixels_RLE(arq, (float*)image, sizeX, sizeY);
     if (result == RGBE_RETURN_FAILURE) {
        printf("erro");
@@ -74,7 +85,6 @@ int main(int argc, char** argv)
         printf("hdrvis [image file.hdr]\n");
         exit(1);
     }//tentativa de carregar a imagem, mas não rolou
-
     // Inicialização da janela gráfica
     init(argc,argv);
 
@@ -92,9 +102,6 @@ int main(int argc, char** argv)
     sizeY = 600;
 */
     printf("%d x %d\n", sizeX, sizeY);
-
-    // Aloca memória para imagem de 24 bits
-    image8 = (RGB8*) malloc(sizeof(RGB8) * sizeX * sizeY);
 
     exposure = 1.0f; // exposição inicial
 
