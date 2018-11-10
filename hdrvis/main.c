@@ -18,7 +18,8 @@ RGB8* image8;
 
 // Fator de exposição inicial
 float exposure = 1.0;
-
+float c = 0.8;
+float gama = 2.2;
 // Modo de exibição atual
 int modo;
 
@@ -31,39 +32,42 @@ float fastpow(float a, float b) {
       return u.f;
 }
 
-// Função principal de processamento: ela deve chamar outras funções
-// quando for necessário (ex: algoritmos de tone mapping, etc)
-void process()
-{
-    //escole a correção com o T E G
-    printf("Exposure: %.3f\n", exposure);
-    //
-    // EXEMPLO: preenche a imagem com pixels cor de laranja...
-    //
-    //
-    // SUBSTITUA este código pelos algoritmos a serem implementados
-    //
+void forma(posI){
     if(modo==SCALE){
 
-    }else{ // == gama
+    float r = image[posI].r * exposure;
+    float rt = r/(r+c);
+    image8[posI].r = fmin(1.0, rt) * 255;
 
+    r =  image[posI].g * exposure;
+    rt = r/(r+c);
+    image8[posI].g = fmin(1.0, rt) * 255;
+
+    r =  image[posI].b * exposure;
+    rt = r/(r+c);
+    image8[posI].b = fmin(1.0, rt) * 255;
+
+    }else{ // == gama
+        float r = image[posI].r * exposure;
+        image8[posI].r = fmin(1.0,pow(r,(1/gama))) * 255;
+
+        float g = image[posI].g * exposure;
+        image8[posI].g = fmin(1.0,pow(g,(1/gama))) * 255;
+
+        float b = image[posI].b * exposure;
+        image8[posI].b = fmin(1.0,pow(b,(1/gama))) * 255;
     }
-    for(int posI=0; posI<sizeX*sizeY; posI++) {
-         image8[posI].r = (unsigned char) fmin(1.0,image[posI].r)*255;
-         image8[posI].g = (unsigned char) fmin(1.0,image[posI].g)*255;
-         image8[posI].b = (unsigned char) fmin(1.0,image[posI].b)*255;
-    }
+}
+void process()
+{
+    printf("Exposure: %.3f\n", exposure);
 
     int pos;
     for(pos=0; pos<sizeX*sizeY; pos++) {
-        image8[pos].r = (unsigned char) (image[pos].r * exposure);
-        image8[pos].g = (unsigned char) (image[pos].g * exposure);
-        image8[pos].b = (unsigned char) (image[pos].b * exposure);
+        forma(pos);
     }
 
-    //
     // NÃO ALTERAR A PARTIR DAQUI!!!!
-    //
     buildTex();
 }
 
@@ -84,23 +88,10 @@ int main(int argc, char** argv)
     if(argc==1) {
         printf("hdrvis [image file.hdr]\n");
         exit(1);
-    }//tentativa de carregar a imagem, mas não rolou
-    // Inicialização da janela gráfica
+    }
+
     init(argc,argv);
 
-    //
-    // INCLUA aqui o código para LER a imagem de entrada
-    //
-    // Siga as orientações no enunciado para:
-    //
-    // 1. Descobrir o tamanho da imagem (ler header)
-    // 2. Ler os pixels
-    //
-
-    // TESTE: cria uma imagem de 800x600
-   /* sizeX = 800;
-    sizeY = 600;
-*/
     printf("%d x %d\n", sizeX, sizeY);
 
     exposure = 1.0f; // exposição inicial
