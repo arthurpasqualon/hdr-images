@@ -18,8 +18,8 @@ RGB8* image8;
 
 // Fator de exposição inicial
 float exposure = 1.0;
-float c = 0.8;
-float gama = 2.2;
+float c = 0.8;//por escala
+float gama = 2.2;//gama
 // Modo de exibição atual
 int modo;
 
